@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <title>Tic Tac Toe</title>
     <link rel="icon" type="image/x-icon" href="./img/tic-tac-toe-icon.png" />
   </head>
@@ -13,20 +13,31 @@
     <div class="container">
       <header>
         <h1>Tic Tac Toe</h1>
-        <button>Player 1: "X"</button>
-        <button>Player 2: "O"</button>
-        <button>Play against computer</button>
+        <div class="player">
+          <input type="text" placeholder="Player 1" id="player-one" />
+          <button class="sign" id="player-one-x">X</button>
+          <button class="sign" id="player-one-o">O</button>
+        </div>
+        <div class="player">
+          <input type="text" placeholder="Player 2" id="player-two" />
+          <button class="sign" id="player-two-x">X</button>
+          <button class="sign" id="player-two-o">O</button>
+        </div>
       </header>
+      <div class="header-lower">
+        <button id="start">Start</button>
+        <button id="ai-game">Play against computer</button>
+      </div>
       <div class="gameboard">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div class="square square-1"></div>
+        <div class="square square-2"></div>
+        <div class="square square-3"></div>
+        <div class="square square-4"></div>
+        <div class="square square-5"></div>
+        <div class="square square-6"></div>
+        <div class="square square-7"></div>
+        <div class="square square-8"></div>
+        <div class="square square-9"></div>
       </div>
       <footer>
         <p>@dwahroianmai</p>
