@@ -47,58 +47,71 @@ const player = (username, sign) => {
   return { username, sign };
 };
 
-setPlayers();
+setPlayerMark();
 
-function setPlayers() {
-  let usernameOne = document.querySelector("#player-one").value;
-  let usernameTwo = document.querySelector("#player-two").value;
+function start(p1, p2) {
+  let usernameOne;
+  let usernameTwo;
+  let player1;
+  let player2;
+  document.querySelector("#start").addEventListener("click", (e) => {
+    usernameOne = document.querySelector("#player-one").value;
+    usernameTwo = document.querySelector("#player-two").value;
+    player1 = player(usernameOne, p1);
+    player2 = player(usernameTwo, p2);
+    document
+      .querySelectorAll(".square")
+      .forEach((square) => (square.textContent = ""));
+    console.log([player1, player2]);
+  });
+}
+
+function setPlayerMark() {
   let playerOneChoice;
   let playerTwoChoice;
   let playerOneX = document.querySelector("#player-one-x");
   let playerOneO = document.querySelector("#player-one-o");
   let playerTwoX = document.querySelector("#player-two-x");
   let playerTwoO = document.querySelector("#player-two-o");
-  let player1;
-  let player2;
   playerOneX.addEventListener("click", (e) => {
     playerOneChoice = "X";
     playerTwoChoice = "O";
-    e.target.style.backgroundColor = "lightgrey";
-    playerOneO.style.backgroundColor = "white";
-    playerTwoO.style.backgroundColor = "lightgrey";
-    playerTwoX.style.backgroundColor = "white";
-    player1 = player(usernameOne, playerOneChoice);
-    player2 = player(usernameTwo, playerTwoChoice);
+    setMark(e.target, playerTwoO, playerOneO, playerTwoX);
+    start(playerOneChoice, playerTwoChoice);
   });
   playerOneO.addEventListener("click", (e) => {
     playerOneChoice = "O";
     playerTwoChoice = "X";
-    e.target.style.backgroundColor = "lightgrey";
-    playerOneX.style.backgroundColor = "white";
-    playerTwoX.style.backgroundColor = "lightgrey";
-    playerTwoO.style.backgroundColor = "white";
-    player1 = player(usernameOne, playerOneChoice);
-    player2 = player(usernameTwo, playerTwoChoice);
+    setMark(e.target, playerTwoX, playerOneX, playerTwoO);
+    start(playerOneChoice, playerTwoChoice);
   });
   playerTwoX.addEventListener("click", (e) => {
     playerTwoChoice = "X";
     playerOneChoice = "O";
-    e.target.style.backgroundColor = "lightgrey";
-    playerOneO.style.backgroundColor = "lightgrey";
-    playerTwoO.style.backgroundColor = "white";
-    playerOneX.style.backgroundColor = "white";
-    player1 = player(usernameOne, playerOneChoice);
-    player2 = player(usernameTwo, playerTwoChoice);
+    setMark(e.target, playerOneO, playerOneX, playerTwoO);
+    start(playerOneChoice, playerTwoChoice);
   });
   playerTwoO.addEventListener("click", (e) => {
     playerTwoChoice = "O";
     playerOneChoice = "X";
-    e.target.style.backgroundColor = "lightgrey";
-    playerTwoX.style.backgroundColor = "white";
-    playerOneX.style.backgroundColor = "lightgrey";
-    playerOneO.style.backgroundColor = "white";
-    player1 = player(usernameOne, playerOneChoice);
-    player2 = player(usernameTwo, playerTwoChoice);
+    setMark(e.target, playerOneX, playerOneO, playerTwoX);
+    start(playerOneChoice, playerTwoChoice);
   });
-  return player1;
 }
+
+function setMark(target, one, two, three) {
+  target.style.backgroundColor = "lightgrey";
+  one.style.backgroundColor = "lightgrey";
+  two.style.backgroundColor = "white";
+  three.style.backgroundColor = "white";
+}
+
+/*
+
+let gameboard = ["X", "O", "X", "X", "X", "O", "X", "O", "O"];
+const board = document.querySelectorAll(".square");
+for (let i = 0; i < 10; i++) {
+  board[i].textContent = gameboard[i];
+}
+
+*/
