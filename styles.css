@@ -70,8 +70,8 @@ h2 {
 }
 
 .gameboard {
-  height: 690px;
-  width: 690px;
+  height: 570px;
+  width: 570px;
   background-color: white;
   box-shadow: 0 0 10px gray;
   border-radius: 12px;
@@ -82,15 +82,15 @@ h2 {
 }
 
 .square {
-  height: 229px;
-  width: 229px;
+  height: 189px;
+  width: 189px;
   border: 1px solid lightgrey;
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Rubik", sans-serif;
-  font-size: 48px;
+  font-size: 90px;
 }
 
 .square:hover {

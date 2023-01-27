@@ -62,6 +62,7 @@ function start(p1, p2) {
     document
       .querySelectorAll(".square")
       .forEach((square) => (square.textContent = ""));
+    game(player1, player2);
     console.log([player1, player2]);
   });
 }
@@ -106,7 +107,35 @@ function setMark(target, one, two, three) {
   three.style.backgroundColor = "white";
 }
 
+function game(p1, p2) {
+  let count = 0;
+  let squares = document.querySelectorAll(".square");
+  squares.forEach((div) => {
+    div.addEventListener("click", (e) => {
+      if (e.target.textContent === "") {
+        count++;
+        if (count % 2 !== 0) {
+          e.target.textContent = p1.sign;
+        } else {
+          e.target.textContent = p2.sign;
+        }
+      }
+      checkResult();
+    });
+  });
+}
+
 /*
+
+xxx...
+...xxx...
+... ...xxx
+x..x..x..
+.x..x..x.
+..x..x..x
+x...x...x
+..x.x.x..
+
 
 let gameboard = ["X", "O", "X", "X", "X", "O", "X", "O", "O"];
 const board = document.querySelectorAll(".square");
