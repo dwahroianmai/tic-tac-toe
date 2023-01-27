@@ -1,30 +1,5 @@
 /*
-1. You’re going to store the gameboard as an 
-   array inside of a Gameboard object,
-   so start there! Your players are also 
-   going to be stored in objects… and you’re
-   probably going to want an object to control 
-   the flow of the game itself.
-2. Your main goal here is to have as little 
-   global code as possible. 
-   Try tucking everything away inside of a 
-   module or factory. Rule of thumb: 
-   if you only ever need ONE of something 
-   (gameBoard, displayController), use a module. 
-   If you need multiples of something (players!), 
-   create them with factories.
-3. Set up your HTML and write a JavaScript 
-   function that will render the contents 
-   of the gameboard array to the webpage 
-   (for now you can just manually fill in 
-   the array with "X"s and "O"s)
-4. Build the functions that allow players to 
-   add marks to a specific spot on
-   the board, and then tie it to the DOM, 
-   letting players click on the gameboard to 
-   place their marker. Don’t forget the 
-   logic that keeps players from playing 
-   in spots that are already taken!
+
 5. Think carefully about where each bit of 
    logic should reside. 
    Each little piece of functionality should 
@@ -36,11 +11,6 @@
 6. Build the logic that checks for when the 
    game is over! 
    Should check for 3-in-a-row and a tie.
-7. Clean up the interface to allow players 
-   to put in their names, 
-   include a button to start/restart the 
-   game and add a display element 
-   that congratulates the winning player!
 */
 
 const player = (username, sign) => {
@@ -62,8 +32,8 @@ function start(p1, p2) {
     document
       .querySelectorAll(".square")
       .forEach((square) => (square.textContent = ""));
+    document.querySelector(".message").style.display = "none";
     game(player1, player2);
-    console.log([player1, player2]);
   });
 }
 
@@ -109,7 +79,7 @@ function setMark(target, one, two, three) {
 
 function game(p1, p2) {
   let count = 0;
-  let squares = document.querySelectorAll(".square");
+  let squares = Array.from(document.querySelectorAll(".square"));
   squares.forEach((div) => {
     div.addEventListener("click", (e) => {
       if (e.target.textContent === "") {
@@ -120,16 +90,42 @@ function game(p1, p2) {
           e.target.textContent = p2.sign;
         }
       }
-      checkResult();
+      checkResult(squares, p1, p2);
     });
+  });
+}
+
+function checkResult(items, p1, p2) {
+  if (items.slice(0, 3).every((elem) => elem.textContent === p1.sign)) {
+    announceWinner(p1);
+  } else if (items.slice(3, 6).every((elem) => elem.textContent === p1.sign)) {
+    announceWinner(p1);
+  } else if (items.slice(6).every((elem) => elem.textContent === p1.sign)) {
+    announceWinner(p1);
+  } else if (items.slice(0, 3).every((elem) => elem.textContent === p2.sign)) {
+    announceWinner(p2);
+  } else if (items.slice(3, 6).every((elem) => elem.textContent === p2.sign)) {
+    announceWinner(p2);
+  } else if (items.slice(6).every((elem) => elem.textContent === p2.sign)) {
+    announceWinner(p2);
+  }
+}
+
+function announceWinner(p) {
+  let message = document.querySelector(".message");
+  let result = document.querySelector(".result");
+  let winner = document.querySelector(".winner");
+  let close = document.querySelector(".close");
+  message.style.display = "flex";
+  result.textContent = "Congratulations!";
+  winner.textContent = p.username + " is the winner.";
+  close.addEventListener("click", (e) => {
+    e.target.parentElement.style.display = "none";
   });
 }
 
 /*
 
-xxx...
-...xxx...
-... ...xxx
 x..x..x..
 .x..x..x.
 ..x..x..x
