@@ -22,7 +22,6 @@ header {
   align-items: center;
   justify-content: center;
   gap: 50px;
-  margin-top: 20px;
 }
 
 header {
@@ -204,12 +203,12 @@ select:focus {
     font-size: 48px;
   }
   .gameboard {
-    height: 360px;
-    width: 360px;
+    height: 330px;
+    width: 330px;
   }
   .square {
-    height: 119px;
-    width: 119px;
+    height: 109px;
+    width: 109px;
   }
   .message {
     top: 30%;

@@ -2,6 +2,26 @@ const player = (username, sign) => {
   return { username, sign };
 };
 
+changeLanguage();
+
+function changeLanguage() {
+  let select = document.querySelector("#lang");
+  select.addEventListener("click", (e) => {
+    if (e.target.value === "ru") {
+      document.querySelector("#player-one").placeholder = "Игрок 1";
+      document.querySelector("#player-two").placeholder = "Игрок 2";
+      document.querySelector("#start").textContent = "Начать";
+      document.querySelector("#ai-game").textContent =
+        "Играть против компьютера";
+    } else {
+      document.querySelector("#player-one").placeholder = "Player 1";
+      document.querySelector("#player-two").placeholder = "Player 2";
+      document.querySelector("#start").textContent = "Play";
+      document.querySelector("#ai-game").textContent = "Play against computer";
+    }
+  });
+}
+
 setPlayerMark();
 
 function setPlayerMark() {
@@ -155,11 +175,15 @@ function checkResult(items, p1, p2) {
     announceWinner(p2);
   } else if (items.every((elem) => elem.textContent !== "")) {
     document.querySelector(".message").style.display = "flex";
-    document.querySelector(".result").textContent = "It's a draw.";
-    document.querySelector(".close").addEventListener("click", (e) => {
-      e.target.parentElement.style.display = "none";
-    });
+    if (document.querySelector("#lang").value === "en")
+      document.querySelector(".result").textContent = "It's a draw.";
+  } else {
+    document.querySelector(".result").textContent = "Ничья.";
+    document.querySelector(".close").textContent = "Играть снова";
   }
+  document.querySelector(".close").addEventListener("click", (e) => {
+    e.target.parentElement.style.display = "none";
+  });
 }
 
 function announceWinner(p) {
@@ -168,8 +192,14 @@ function announceWinner(p) {
   let winner = document.querySelector(".winner");
   let close = document.querySelector(".close");
   message.style.display = "flex";
-  result.textContent = "Congratulations!";
-  winner.textContent = p.username + " is the winner.";
+  if (document.querySelector("#lang").value === "en") {
+    result.textContent = "Congratulations!";
+    winner.textContent = p.username + " is the winner.";
+  } else {
+    result.textContent = "Поздравляю!";
+    winner.textContent = p.username + " победил.";
+    close.textContent = "Играть снова";
+  }
   close.addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
   });
