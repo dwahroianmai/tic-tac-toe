@@ -231,9 +231,9 @@ function playAgainstComputer() {
       (div) => (div.textContent = "")
     );
     if (document.querySelector("#lang").value === "en") {
-      document.querySelector("#player-two").value = "Silly machine";
+      document.querySelector("#player-two").value = "in development";
     } else {
-      document.querySelector("#player-two").value = "глупая рухлядь";
+      document.querySelector("#player-two").value = "в разработке";
     }
   });
 }
