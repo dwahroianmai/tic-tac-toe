@@ -196,6 +196,7 @@ select {
   padding: 5px;
   text-align: center;
   font-size: 22px;
+  width: 150px;
 }
 
 select:focus {

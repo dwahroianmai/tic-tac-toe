@@ -222,22 +222,3 @@ function announceWinner(p) {
     e.target.parentElement.style.display = "none";
   });
 }
-
-playAgainstComputer();
-
-function playAgainstComputer() {
-  document.querySelector("#ai-game").addEventListener("click", () => {
-    Array.from(document.querySelectorAll(".square")).forEach(
-      (div) => (div.textContent = "")
-    );
-    if (document.querySelector("#lang").value === "en") {
-      document.querySelector("#player-two").value = "in development";
-    } else {
-      document.querySelector("#player-two").value = "в разработке";
-    }
-  });
-}
-
-/* 
-play against computer 
-*/
