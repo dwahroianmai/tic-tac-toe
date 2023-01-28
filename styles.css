@@ -150,6 +150,13 @@ button:active {
   transform: scale(1);
 }
 
+.rules {
+  font-family: "Rubik", sans-serif;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 footer {
   font-family: "Rubik", sans-serif;
   font-size: 22px;
@@ -196,7 +203,8 @@ select:focus {
 }
 
 @media (max-width: 600px) {
-  button {
+  button,
+  select {
     color: black;
   }
   header {

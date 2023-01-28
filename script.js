@@ -6,13 +6,15 @@ changeLanguage();
 
 function changeLanguage() {
   let select = document.querySelector("#lang");
-  select.addEventListener("click", (e) => {
+  select.addEventListener("change", (e) => {
     if (e.target.value === "ru") {
       document.querySelector("#player-one").placeholder = "Игрок 1";
       document.querySelector("#player-two").placeholder = "Игрок 2";
       document.querySelector("#start").textContent = "Начать";
       document.querySelector("#ai-game").textContent =
         "Играть против компьютера";
+      document.querySelector(".rules").textContent =
+        "Введите имена игроков, выберите 'Х' или 'О' и нажмите 'Начать'.";
     } else {
       document.querySelector("#player-one").placeholder = "Player 1";
       document.querySelector("#player-two").placeholder = "Player 2";
@@ -83,6 +85,11 @@ function start(p1, p2) {
 }
 
 function game(p1, p2) {
+  if (document.querySelector("#lang").value === "en") {
+    document.querySelector(".rules").textContent = "The game is on!";
+  } else if (document.querySelector("#lang").value === "ru") {
+    document.querySelector(".rules").textContent = "Игра началась!";
+  }
   let count = 0;
   let squares = Array.from(document.querySelectorAll(".square"));
   squares.forEach((div) => {
@@ -211,15 +218,16 @@ function announceWinner(p) {
 function playAgain() {
   document.querySelector(".again").addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
-    let p1 = player(document.querySelector("#player-one").value);
-    let p2 = player(document.querySelector("#player-two").value);
     document
       .querySelectorAll(".square")
       .forEach((square) => (square.textContent = ""));
-    game(p1, p2);
+    gameAgain();
   });
 }
 
+function gameAgain() {}
+
 /* 
+fix: play again button
 play against computer 
 */
