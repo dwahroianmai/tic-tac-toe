@@ -52,6 +52,7 @@ h1 {
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
+  z-index: 1000;
 }
 
 .close {

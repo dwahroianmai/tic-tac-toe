@@ -177,9 +177,10 @@ function checkResult(items, p1, p2) {
     document.querySelector(".message").style.display = "flex";
     if (document.querySelector("#lang").value === "en")
       document.querySelector(".result").textContent = "It's a draw.";
+    document.querySelector(".again").textContent = "Play again";
   } else {
     document.querySelector(".result").textContent = "Ничья.";
-    document.querySelector(".close").textContent = "Играть снова";
+    document.querySelector(".again").textContent = "Играть снова";
   }
   document.querySelector(".close").addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
@@ -198,7 +199,7 @@ function announceWinner(p) {
   } else {
     result.textContent = "Поздравляю!";
     winner.textContent = p.username + " победил.";
-    close.textContent = "Играть снова";
+    document.querySelector(".again").textContent = "Играть снова";
   }
   close.addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
@@ -219,6 +220,5 @@ function playAgain() {
 }
 
 /* 
-play against computer
-mobile version  
+play against computer 
 */
