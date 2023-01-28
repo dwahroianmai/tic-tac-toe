@@ -4,24 +4,6 @@ const player = (username, sign) => {
 
 setPlayerMark();
 
-function start(p1, p2) {
-  let usernameOne;
-  let usernameTwo;
-  let player1;
-  let player2;
-  document.querySelector("#start").addEventListener("click", (e) => {
-    usernameOne = document.querySelector("#player-one").value;
-    usernameTwo = document.querySelector("#player-two").value;
-    player1 = player(usernameOne, p1);
-    player2 = player(usernameTwo, p2);
-    document
-      .querySelectorAll(".square")
-      .forEach((square) => (square.textContent = ""));
-    document.querySelector(".message").style.display = "none";
-    game(player1, player2);
-  });
-}
-
 function setPlayerMark() {
   let playerOneChoice;
   let playerTwoChoice;
@@ -60,6 +42,24 @@ function setMark(target, one, two, three) {
   one.style.backgroundColor = "lightgrey";
   two.style.backgroundColor = "white";
   three.style.backgroundColor = "white";
+}
+
+function start(p1, p2) {
+  let usernameOne;
+  let usernameTwo;
+  let player1;
+  let player2;
+  document.querySelector("#start").addEventListener("click", (e) => {
+    usernameOne = document.querySelector("#player-one").value;
+    usernameTwo = document.querySelector("#player-two").value;
+    player1 = player(usernameOne, p1);
+    player2 = player(usernameTwo, p2);
+    document
+      .querySelectorAll(".square")
+      .forEach((square) => (square.textContent = ""));
+    document.querySelector(".message").style.display = "none";
+    game(player1, player2);
+  });
 }
 
 function game(p1, p2) {

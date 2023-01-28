@@ -168,3 +168,55 @@ img {
 img:hover {
   transform: scale(1.1);
 }
+
+.lang {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.lang img {
+  height: 30px;
+}
+
+select {
+  font-family: "Rubik", sans-serif;
+  appearance: none;
+  background-color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+  text-align: center;
+  font-size: 22px;
+}
+
+select:focus {
+  outline: none;
+  background-color: whitesmoke;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  .gameboard {
+    height: 360px;
+    width: 360px;
+  }
+  .square {
+    height: 119px;
+    width: 119px;
+  }
+  .message {
+    top: 30%;
+    width: 360px;
+    height: 550px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+}
