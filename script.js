@@ -73,7 +73,9 @@ function start(p1, p2) {
   let usernameTwo;
   let player1;
   let player2;
+  let count;
   document.querySelector("#start").addEventListener("click", (e) => {
+    count = 0;
     usernameOne = document.querySelector("#player-one").value;
     usernameTwo = document.querySelector("#player-two").value;
     player1 = player(usernameOne, p1);
@@ -82,38 +84,32 @@ function start(p1, p2) {
       .querySelectorAll(".square")
       .forEach((square) => (square.textContent = ""));
     document.querySelector(".message").style.display = "none";
-    game(player1, player2);
-  });
-}
-
-function game(p1, p2) {
-  console.log(p1, p2);
-  if (document.querySelector("#lang").value === "en") {
-    document.querySelector(".rules").textContent = "The game is on!";
-  } else if (document.querySelector("#lang").value === "ru") {
-    document.querySelector(".rules").textContent = "Игра началась!";
-  }
-  let count = 0;
-  let squares = Array.from(document.querySelectorAll(".square"));
-  squares.forEach((div) => {
-    div.addEventListener("click", (e) => {
-      if (e.target.textContent === "") {
-        count++;
-        console.log(count);
-        if (count % 2 !== 0) {
-          e.target.textContent = p1.sign;
-        } else {
-          e.target.textContent = p2.sign;
+    if (document.querySelector("#lang").value === "en") {
+      document.querySelector(".rules").textContent = "The game is on!";
+    } else if (document.querySelector("#lang").value === "ru") {
+      document.querySelector(".rules").textContent = "Игра началась!";
+    }
+    let squares = Array.from(document.querySelectorAll(".square"));
+    squares.forEach((div) => {
+      div.addEventListener("click", (e) => {
+        if (e.target.textContent === "") {
+          count++;
+          console.log(count);
+          if (count % 2 !== 0) {
+            e.target.textContent = player1.sign;
+          } else {
+            e.target.textContent = player2.sign;
+          }
         }
-      }
-      checkResult(squares, p1, p2);
-    });
-    document.querySelector(".again").addEventListener("click", (e) => {
-      e.target.parentElement.style.display = "none";
-      document
-        .querySelectorAll(".square")
-        .forEach((square) => (square.textContent = ""));
-      count = 0;
+        checkResult(squares, player1, player2);
+      });
+      document.querySelector(".again").addEventListener("click", (e) => {
+        e.target.parentElement.style.display = "none";
+        document
+          .querySelectorAll(".square")
+          .forEach((square) => (square.textContent = ""));
+        count = 0;
+      });
     });
   });
 }
