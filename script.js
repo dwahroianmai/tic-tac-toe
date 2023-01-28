@@ -20,6 +20,8 @@ function changeLanguage() {
       document.querySelector("#player-two").placeholder = "Player 2";
       document.querySelector("#start").textContent = "Play";
       document.querySelector("#ai-game").textContent = "Play against computer";
+      document.querySelector(".rules").textContent =
+        "Enter your nicknames, choose 'X' or 'O' and press 'Play'.";
     }
   });
 }
