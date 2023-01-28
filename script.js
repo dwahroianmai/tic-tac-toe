@@ -129,6 +129,36 @@ function checkResult(items, p1, p2) {
     items[8].textContent === p2.sign
   ) {
     announceWinner(p2);
+  } else if (
+    items[0].textContent === p1.sign &&
+    items[4].textContent === p1.sign &&
+    items[8].textContent === p1.sign
+  ) {
+    announceWinner(p1);
+  } else if (
+    items[0].textContent === p2.sign &&
+    items[4].textContent === p2.sign &&
+    items[8].textContent === p2.sign
+  ) {
+    announceWinner(p2);
+  } else if (
+    items[2].textContent === p1.sign &&
+    items[4].textContent === p1.sign &&
+    items[6].textContent === p1.sign
+  ) {
+    announceWinner(p1);
+  } else if (
+    items[2].textContent === p2.sign &&
+    items[4].textContent === p2.sign &&
+    items[6].textContent === p2.sign
+  ) {
+    announceWinner(p2);
+  } else if (items.every((elem) => elem.textContent !== "")) {
+    document.querySelector(".message").style.display = "flex";
+    document.querySelector(".result").textContent = "It's a draw.";
+    document.querySelector(".close").addEventListener("click", (e) => {
+      e.target.parentElement.style.display = "none";
+    });
   }
 }
 
@@ -144,10 +174,3 @@ function announceWinner(p) {
     e.target.parentElement.style.display = "none";
   });
 }
-
-/*
-
-x...x...x
-..x.x.x..
-
-*/
