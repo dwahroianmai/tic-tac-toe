@@ -174,3 +174,9 @@ function announceWinner(p) {
     e.target.parentElement.style.display = "none";
   });
 }
+
+/* 
+play against computer
+message button
+mobile version
+*/
