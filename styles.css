@@ -196,6 +196,9 @@ select:focus {
 }
 
 @media (max-width: 600px) {
+  button {
+    color: black;
+  }
   header {
     flex-direction: column;
     gap: 15px;
@@ -210,6 +213,7 @@ select:focus {
   .square {
     height: 109px;
     width: 109px;
+    font-size: 70px;
   }
   .message {
     top: 30%;

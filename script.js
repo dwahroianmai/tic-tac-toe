@@ -196,9 +196,10 @@ function announceWinner(p) {
   if (document.querySelector("#lang").value === "en") {
     result.textContent = "Congratulations!";
     winner.textContent = p.username + " is the winner.";
+    document.querySelector(".again").textContent = "Play again";
   } else {
     result.textContent = "Поздравляю!";
-    winner.textContent = p.username + " победил.";
+    winner.textContent = "Игрок" + p.username + " победил.";
     document.querySelector(".again").textContent = "Играть снова";
   }
   close.addEventListener("click", (e) => {
