@@ -173,10 +173,22 @@ function announceWinner(p) {
   close.addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
   });
+  playAgain();
+}
+
+function playAgain() {
+  document.querySelector(".again").addEventListener("click", (e) => {
+    e.target.parentElement.style.display = "none";
+    let p1 = player(document.querySelector("#player-one").value);
+    let p2 = player(document.querySelector("#player-two").value);
+    document
+      .querySelectorAll(".square")
+      .forEach((square) => (square.textContent = ""));
+    game(p1, p2);
+  });
 }
 
 /* 
 play against computer
-message button
-mobile version
+mobile version  
 */
