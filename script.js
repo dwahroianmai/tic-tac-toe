@@ -223,6 +223,21 @@ function announceWinner(p) {
   });
 }
 
+playAgainstComputer();
+
+function playAgainstComputer() {
+  document.querySelector("#ai-game").addEventListener("click", () => {
+    Array.from(document.querySelectorAll(".square")).forEach(
+      (div) => (div.textContent = "")
+    );
+    if (document.querySelector("#lang").value === "en") {
+      document.querySelector("#player-two").value = "Silly machine";
+    } else {
+      document.querySelector("#player-two").value = "глупая рухлядь";
+    }
+  });
+}
+
 /* 
 play against computer 
 */
