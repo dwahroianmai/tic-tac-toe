@@ -85,6 +85,7 @@ function start(p1, p2) {
 }
 
 function game(p1, p2) {
+  console.log(p1, p2);
   if (document.querySelector("#lang").value === "en") {
     document.querySelector(".rules").textContent = "The game is on!";
   } else if (document.querySelector("#lang").value === "ru") {
@@ -96,6 +97,7 @@ function game(p1, p2) {
     div.addEventListener("click", (e) => {
       if (e.target.textContent === "") {
         count++;
+        console.log(count);
         if (count % 2 !== 0) {
           e.target.textContent = p1.sign;
         } else {
@@ -103,6 +105,13 @@ function game(p1, p2) {
         }
       }
       checkResult(squares, p1, p2);
+    });
+    document.querySelector(".again").addEventListener("click", (e) => {
+      e.target.parentElement.style.display = "none";
+      document
+        .querySelectorAll(".square")
+        .forEach((square) => (square.textContent = ""));
+      count = 0;
     });
   });
 }
@@ -214,56 +223,8 @@ function announceWinner(p) {
   close.addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
   });
-  playAgain();
-}
-
-function playAgain() {
-  document.querySelector(".again").addEventListener("click", (e) => {
-    e.target.parentElement.style.display = "none";
-    document
-      .querySelectorAll(".square")
-      .forEach((square) => (square.textContent = ""));
-    gameAgain();
-  });
-}
-
-function gameAgain() {
-  let usernameOne = document.querySelector("#player-one").value;
-  let usernameTwo = document.querySelector("#player-two").value;
-  let playerOneChoice;
-  let playerTwoChoice;
-  if (
-    document.querySelector("#player-one-x").style.backgroundColor ===
-    "lightgrey"
-  ) {
-    playerOneChoice = "X";
-    playerTwoChoice = "O";
-  } else {
-    playerOneChoice = "O";
-    playerTwoChoice = "X";
-  }
-  let p1 = player(usernameOne, playerOneChoice);
-  let p2 = player(usernameTwo, playerTwoChoice);
-  let count = 0;
-  let squares = Array.from(document.querySelectorAll(".square"));
-  squares.forEach((div) => {
-    div.addEventListener("click", (e) => {
-      console.log(p1);
-      if (e.target.textContent === "") {
-        count++;
-        console.log(count);
-        if (count % 2 !== 0) {
-          e.target.textContent = p1.sign;
-        } else {
-          e.target.textContent = p2.sign;
-        }
-      }
-    });
-    checkResult(squares, p1, p2);
-  });
 }
 
 /* 
-fix: play again button
 play against computer 
 */
