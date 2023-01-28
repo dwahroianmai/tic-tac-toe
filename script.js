@@ -206,7 +206,7 @@ function announceWinner(p) {
     document.querySelector(".again").textContent = "Play again";
   } else {
     result.textContent = "Поздравляю!";
-    winner.textContent = "Игрок" + p.username + " победил.";
+    winner.textContent = "Игрок " + p.username + " победил.";
     document.querySelector(".again").textContent = "Играть снова";
   }
   close.addEventListener("click", (e) => {
