@@ -1,18 +1,3 @@
-/*
-
-5. Think carefully about where each bit of 
-   logic should reside. 
-   Each little piece of functionality should 
-   be able to fit in the game, 
-   player or gameboard objects.. but take care 
-   to put them in “logical” places. 
-   Spending a little time brainstorming here 
-   can make your life much easier later!
-6. Build the logic that checks for when the 
-   game is over! 
-   Should check for 3-in-a-row and a tie.
-*/
-
 const player = (username, sign) => {
   return { username, sign };
 };
@@ -108,6 +93,42 @@ function checkResult(items, p1, p2) {
     announceWinner(p2);
   } else if (items.slice(6).every((elem) => elem.textContent === p2.sign)) {
     announceWinner(p2);
+  } else if (
+    items[0].textContent === p1.sign &&
+    items[3].textContent === p1.sign &&
+    items[6].textContent === p1.sign
+  ) {
+    announceWinner(p1);
+  } else if (
+    items[1].textContent === p1.sign &&
+    items[4].textContent === p1.sign &&
+    items[7].textContent === p1.sign
+  ) {
+    announceWinner(p1);
+  } else if (
+    items[2].textContent === p1.sign &&
+    items[5].textContent === p1.sign &&
+    items[8].textContent === p1.sign
+  ) {
+    announceWinner(p1);
+  } else if (
+    items[0].textContent === p2.sign &&
+    items[3].textContent === p2.sign &&
+    items[6].textContent === p2.sign
+  ) {
+    announceWinner(p2);
+  } else if (
+    items[1].textContent === p2.sign &&
+    items[4].textContent === p2.sign &&
+    items[7].textContent === p2.sign
+  ) {
+    announceWinner(p2);
+  } else if (
+    items[2].textContent === p2.sign &&
+    items[5].textContent === p2.sign &&
+    items[8].textContent === p2.sign
+  ) {
+    announceWinner(p2);
   }
 }
 
@@ -126,17 +147,7 @@ function announceWinner(p) {
 
 /*
 
-x..x..x..
-.x..x..x.
-..x..x..x
 x...x...x
 ..x.x.x..
-
-
-let gameboard = ["X", "O", "X", "X", "X", "O", "X", "O", "O"];
-const board = document.querySelectorAll(".square");
-for (let i = 0; i < 10; i++) {
-  board[i].textContent = gameboard[i];
-}
 
 */
