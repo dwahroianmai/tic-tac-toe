@@ -189,14 +189,15 @@ function checkResult(items, p1, p2) {
     announceWinner(p2);
   } else if (items.every((elem) => elem.textContent !== "")) {
     document.querySelector(".message").style.display = "flex";
-    if (document.querySelector("#lang").value === "en")
+    if (document.querySelector("#lang").value === "en") {
       document.querySelector(".result").textContent = "It's a draw.";
-    document.querySelector(".winner").textContent = "";
-    document.querySelector(".again").textContent = "Play again";
-  } else {
-    document.querySelector(".result").textContent = "Ничья.";
-    document.querySelector(".winner").textContent = "";
-    document.querySelector(".again").textContent = "Играть снова";
+      document.querySelector(".winner").textContent = "";
+      document.querySelector(".again").textContent = "Play again";
+    } else {
+      document.querySelector(".result").textContent = "Ничья.";
+      document.querySelector(".winner").textContent = "";
+      document.querySelector(".again").textContent = "Играть снова";
+    }
   }
   document.querySelector(".close").addEventListener("click", (e) => {
     e.target.parentElement.style.display = "none";
