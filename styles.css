@@ -237,4 +237,7 @@ select:focus {
   h2 {
     font-size: 40px;
   }
+  select {
+    text-align: center;
+  }
 }
