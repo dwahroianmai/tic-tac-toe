@@ -11,15 +11,12 @@ function changeLanguage() {
       document.querySelector("#player-one").placeholder = "Игрок 1";
       document.querySelector("#player-two").placeholder = "Игрок 2";
       document.querySelector("#start").textContent = "Начать";
-      document.querySelector("#ai-game").textContent =
-        "Играть против компьютера";
       document.querySelector(".rules").textContent =
-        "Введите имена игроков, выберите 'Х' или 'О' и нажмите 'Начать'.";
+        "Введите имена игроков, выберите 'X' или 'O' и нажмите 'Начать'.";
     } else {
       document.querySelector("#player-one").placeholder = "Player 1";
       document.querySelector("#player-two").placeholder = "Player 2";
       document.querySelector("#start").textContent = "Play";
-      document.querySelector("#ai-game").textContent = "Play against computer";
       document.querySelector(".rules").textContent =
         "Enter your nicknames, choose 'X' or 'O' and press 'Play'.";
     }
