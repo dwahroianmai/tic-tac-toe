@@ -57,7 +57,6 @@ function setPlayerMark() {
       .forEach((square) => (square.textContent = ""));
     playerOneChoice = "X";
     playerTwoChoice = "O";
-    console.log(playerOneChoice, playerTwoChoice);
     setMark(e.target, playerTwoO, playerOneO, playerTwoX);
     player1 = player(usernameOne, playerOneChoice);
     player2 = player(usernameTwo, playerTwoChoice);
@@ -71,7 +70,7 @@ function setPlayerMark() {
       .forEach((square) => (square.textContent = ""));
     playerOneChoice = "O";
     playerTwoChoice = "X";
-    console.log(playerOneChoice, playerTwoChoice);
+
     setMark(e.target, playerTwoX, playerOneX, playerTwoO);
     player1 = player(usernameOne, playerOneChoice);
     player2 = player(usernameTwo, playerTwoChoice);
@@ -85,7 +84,7 @@ function setPlayerMark() {
       .forEach((square) => (square.textContent = ""));
     playerTwoChoice = "X";
     playerOneChoice = "O";
-    console.log(playerOneChoice, playerTwoChoice);
+
     setMark(e.target, playerOneO, playerOneX, playerTwoO);
     player1 = player(usernameOne, playerOneChoice);
     player2 = player(usernameTwo, playerTwoChoice);
@@ -99,14 +98,14 @@ function setPlayerMark() {
       .forEach((square) => (square.textContent = ""));
     playerTwoChoice = "O";
     playerOneChoice = "X";
-    console.log(playerOneChoice, playerTwoChoice);
+
     setMark(e.target, playerOneX, playerOneO, playerTwoX);
     player1 = player(usernameOne, playerOneChoice);
     player2 = player(usernameTwo, playerTwoChoice);
   });
   document.querySelector("#start").addEventListener("click", (e) => {
     count = 0;
-    console.log(player1, player2);
+
     document
       .querySelectorAll(".square")
       .forEach((square) => (square.textContent = ""));
@@ -121,10 +120,9 @@ function setPlayerMark() {
     let squares = Array.from(document.querySelectorAll(".square"));
     squares.forEach((div) => {
       div.addEventListener("click", (e) => {
-        console.log(player1, player2);
         if (e.target.textContent === "") {
           count++;
-          console.log(count);
+
           if (count % 2 !== 0) {
             e.target.textContent = player1.sign;
           } else {
